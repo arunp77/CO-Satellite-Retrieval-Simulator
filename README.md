@@ -252,8 +252,8 @@ $$
 
 where
 
-* (S_i) : line strength
-* (\phi_i(\nu)) : Voigt profile
+* $S_i$ : line strength
+* $\phi_i(\nu)$ : Voigt profile
 
 ---
 
