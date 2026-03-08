@@ -314,9 +314,9 @@ def demo_line_profiles(
     V = voigt_profile_func(nu, nu0, delta_nu_D, delta_nu_L)
 
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.plot(nu, G / G.max(), label="Gaussian (Doppler)", color="royalblue", lw=2)
-    ax.plot(nu, L / L.max(), label="Lorentzian (Pressure)", color="tomato", lw=2)
-    ax.plot(nu, V / V.max(), label="Voigt (combined)", color="seagreen", lw=2, ls="--")
+    ax.plot(nu, G / G.max(), label="Gaussian (Doppler)", color="royalblue", lw=1)
+    ax.plot(nu, L / L.max(), label="Lorentzian (Pressure)", color="tomato", lw=1)
+    ax.plot(nu, V / V.max(), label="Voigt (combined)", color="seagreen", lw=1, ls="..")
     ax.axvline(nu0, color="gray", ls=":", lw=1, label="Line centre")
     ax.set_xlabel("Wavenumber [cm⁻¹]", fontsize=12)
     ax.set_ylabel("Normalised profile", fontsize=12)
