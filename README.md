@@ -15,7 +15,15 @@ The project was developed as an **independent technical study of satellite CO₂
 
 # Motivation
 
-Satellite missions measure atmospheric gases by observing how sunlight interacts with molecules in the atmosphere. CO₂ has strong absorption bands in the **shortwave infrared (SWIR)** region. By analyzing these absorption signatures, retrieval algorithms estimate the atmospheric CO₂ concentration.
+Satellite missions measure atmospheric gases by observing how sunlight interacts with molecules in the atmosphere. CO₂ has strong absorption bands in the **shortwave infrared (SWIR)** region. By analyzing these absorption signatures, retrieval algorithms estimate the atmospheric CO₂ concentration. The project implements:
+
+1. Beer–Lambert absorption modeling
+2. CO₂ spectral line simulation
+3. Voigt line profile modeling
+4. HITRAN-based spectroscopy
+5. Radiative transfer forward modeling
+6. Synthetic satellite radiance spectra
+7. Conceptual XCO₂ retrieval
 
 These measurements rely on several physical processes:
 
@@ -26,6 +34,53 @@ These measurements rely on several physical processes:
 * forward radiance modeling
 
 This project reproduces these processes in a simplified computational framework.
+
+---
+
+# Project Workflow
+
+The simulator reproduces the simplified chain of satellite measurements:
+
+```
+Sunlight
+   ↓
+Atmospheric absorption by CO₂
+   ↓
+Spectral absorption features
+   ↓
+Satellite spectrometer measurement
+   ↓
+Forward radiance model
+   ↓
+CO₂ concentration retrieval
+```
+--- 
+# Repository Structure
+
+```
+co2_retrieval_simulator
+
+├── notebooks
+│   ├── 01_beer_lambert.ipynb
+│   ├── 02_co2_spectral_line.ipynb
+│   ├── 03_forward_model.ipynb
+│   ├── 04_hitran_spectrum.ipynb
+│   └── 05_xco2_retrieval.ipynb
+│
+├── src
+│   ├── absorption.py
+│   ├── spectroscopy.py
+│   ├── radiative_transfer.py
+│   ├── hitran_model.py
+│   └── retrieval.py
+│
+├── figures
+│
+├── data
+│   └── hitran_lines.txt
+│
+└── README.md
+```
 
 ---
 
@@ -141,71 +196,6 @@ Real satellite retrieval algorithms rely on the **HITRAN molecular spectroscopy 
 HITRAN is the standard reference for atmospheric spectroscopy modeling.
 
 The project uses the **HITRAN API (HAPI)** to download and simulate CO₂ spectral lines.
-
----
-
-# Project Objectives
-
-The main goal of this project is to simulate the key physical components of satellite CO₂ measurements.
-
-The project implements:
-
-1. Beer–Lambert absorption modeling
-2. CO₂ spectral line simulation
-3. Voigt line profile modeling
-4. HITRAN-based spectroscopy
-5. Radiative transfer forward modeling
-6. Synthetic satellite radiance spectra
-7. Conceptual XCO₂ retrieval
-
----
-
-# Project Workflow
-
-The simulator reproduces the simplified chain of satellite measurements:
-
-```
-Sunlight
-   ↓
-Atmospheric absorption by CO₂
-   ↓
-Spectral absorption features
-   ↓
-Satellite spectrometer measurement
-   ↓
-Forward radiance model
-   ↓
-CO₂ concentration retrieval
-```
-
----
-
-# Repository Structure
-
-```
-co2_retrieval_simulator
-
-├── notebooks
-│   ├── 01_beer_lambert.ipynb
-│   ├── 02_co2_spectral_line.ipynb
-│   ├── 03_forward_model.ipynb
-│   ├── 04_hitran_spectrum.ipynb
-│   └── 05_xco2_retrieval.ipynb
-│
-├── src
-│   ├── absorption.py
-│   ├── spectroscopy.py
-│   ├── radiative_transfer.py
-│   ├── hitran_model.py
-│   └── retrieval.py
-│
-├── figures
-│
-├── data
-│   └── hitran_lines.txt
-│
-└── README.md
-```
 
 ---
 
